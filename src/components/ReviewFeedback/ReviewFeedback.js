@@ -7,14 +7,21 @@ class ReviewFeedback extends Component {
         return (
             <div className="App">
                 <h3>Review Your Feedback</h3>
-                <p>Feelings: $REDUCER</p>
-                <p>Understanding: $REDUCER</p>
-                <p>Support: $REDUCER</p>
-                <p>Comments: $REDUCER</p>
+                <p>Feelings: {this.props.feelings}</p>
+                <p>Understanding: {this.props.understanding}</p>
+                <p>Support: {this.props.support}</p>
+                <p>Comments: {this.props.comments}</p>
                 <button>INCOMPLETE</button>
             </div>
         );
     }
 }
 
-export default connect()(ReviewFeedback);
+const mapStateToProps = (state) => ({
+    feelings: state.feelingsFeedback,
+    understanding: state.understandingFeedback,
+    support: state.supportFeedback,
+    comments: state.commentsFeedback,
+})
+
+export default connect(mapStateToProps)(ReviewFeedback);
