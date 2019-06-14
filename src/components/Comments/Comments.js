@@ -11,13 +11,18 @@ class Comments extends Component {
         });
     }
 
+    handleBackClick = () => {
+        this.props.history.push('/2');
+    }
+
+
     render() {
         return (
             <div className="App">
                 <h3>Any comments you want to leave?</h3>
                 <label>Comments</label>
                 <input placeholder="Comments" onChange={this.handleChange}/>
-                <button>NEXT</button>
+                <button onClick={this.handleBackClick}>BACK</button>
                 <ReviewFeedback/>
             </div>
         );

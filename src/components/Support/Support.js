@@ -15,6 +15,11 @@ class Support extends Component {
         this.props.history.push('/3');
     }
 
+    handleBackClick = () => {
+        this.props.history.push('/1');
+    }
+
+
     render() {
         return (
             <div className="App">
@@ -28,6 +33,7 @@ class Support extends Component {
                     <option value="5">5</option>
                 </select>
                 <button onClick={this.handleClick}>NEXT</button>
+                <button onClick={this.handleBackClick}>BACK</button>
                 <ReviewFeedback/>
             </div>
         );
