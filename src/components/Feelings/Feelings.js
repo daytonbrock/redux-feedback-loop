@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class Feelings extends Component {
 
@@ -16,6 +17,7 @@ class Feelings extends Component {
                     <option>5</option>
                 </select>
                 <button>NEXT</button>
+                <ReviewFeedback/>
             </div>
         );
     }

@@ -8,7 +8,6 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 
 
-
 class App extends Component {
   render() {
     return (
