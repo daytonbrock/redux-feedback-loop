@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../Header/Header';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class Feelings extends Component {
@@ -15,6 +16,7 @@ class Feelings extends Component {
     render() {
         return (
             <div className="App">
+                <Header/>
                 <h3>How are you feelings today?</h3>
                 <label>Feeling?</label>
                 <select onChange={this.handleChange}>

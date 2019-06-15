@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../Header/Header';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class Comments extends Component {
@@ -19,6 +20,7 @@ class Comments extends Component {
     render() {
         return (
             <div className="App">
+                <Header/>
                 <h3>Any comments you want to leave?</h3>
                 <label>Comments</label>
                 <input placeholder="Comments" onChange={this.handleChange}/>
