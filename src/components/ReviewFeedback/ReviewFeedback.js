@@ -12,30 +12,38 @@ class ReviewFeedback extends Component {
             support: this.props.support,
             comments: this.props.comments,
         }
-        // post to server
+        this.postToServer(feedback);
+        // navigate to success page
+        this.props.history.push('/5');
+    }
+
+    postToServer = (object) => {
         axios({
             method: 'POST',
             url: '/submit',
-            data: feedback,
+            data: object,
         }).then(() => {
-            // reset redux state
-            this.props.dispatch({
-                type: 'FEELINGS_FEEDBACK',
-                payload: 0,
-            });
-            this.props.dispatch({
-                type: 'UNDERSTANDING_FEEDBACK',
-                payload: 0,
-            });
-            this.props.dispatch({
-                type: 'SUPPORT_FEEDBACK',
-                payload: 0,
-            });
-            this.props.dispatch({
-                type: 'COMMENTS_FEEDBACK',
-                payload: '',
-            });
+            this.resetReduxState();
         })
+    }
+
+    resetReduxState = () => {
+        this.props.dispatch({
+            type: 'FEELINGS_FEEDBACK',
+            payload: 0,
+        });
+        this.props.dispatch({
+            type: 'UNDERSTANDING_FEEDBACK',
+            payload: 0,
+        });
+        this.props.dispatch({
+            type: 'SUPPORT_FEEDBACK',
+            payload: 0,
+        });
+        this.props.dispatch({
+            type: 'COMMENTS_FEEDBACK',
+            payload: '',
+        });
     }
 
     render() {

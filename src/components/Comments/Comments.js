@@ -5,11 +5,22 @@ import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 
 class Comments extends Component {
 
+    state = {
+        comments: '',
+    }
+
     handleChange = (event) => {
+        this.setState({
+            comments: event.target.value,
+        });
+    }
+
+    handleNextClick = () => {
         this.props.dispatch({
             type: 'COMMENTS_FEEDBACK',
-            payload: event.target.value
+            payload: this.state.comments,
         });
+        this.props.history.push('/4');
     }
 
     handleBackClick = () => {
@@ -25,6 +36,7 @@ class Comments extends Component {
                 <label>Comments</label>
                 <input placeholder="Comments" onChange={this.handleChange}/>
                 <button onClick={this.handleBackClick}>BACK</button>
+                <button onClick={this.handleNextClick}>NEXT</button>
                 <ReviewFeedback/>
             </div>
         );
