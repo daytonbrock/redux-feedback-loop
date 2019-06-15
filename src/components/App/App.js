@@ -19,6 +19,7 @@ class App extends Component {
         <Route path='/2' component={Support}/>
         <Route path='/3' component={Comments}/>
         <Route path='/4' component={ReviewFeedback}/>
+        <Route path='/5' component={Success}/>
       </Router>
     );
   }
