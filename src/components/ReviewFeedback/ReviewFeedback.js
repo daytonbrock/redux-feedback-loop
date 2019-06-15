@@ -1,9 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class ReviewFeedback extends Component {
 
-    
+    handleClick = () => {
+        // create data object to send
+        const feedback = {
+            feeling: this.props.feelings,
+            understanding: this.props.understanding,
+            support: this.props.support,
+            comments: this.props.comments,
+        }
+        // post to server
+        axios({
+            method: 'POST',
+            url: '/submit',
+            data: feedback,
+        }).then(() => {
+            // reset redux state
+            this.props.dispatch({
+                type: 'FEELINGS_FEEDBACK',
+                payload: 0,
+            });
+            this.props.dispatch({
+                type: 'UNDERSTANDING_FEEDBACK',
+                payload: 0,
+            });
+            this.props.dispatch({
+                type: 'SUPPORT_FEEDBACK',
+                payload: 0,
+            });
+            this.props.dispatch({
+                type: 'COMMENTS_FEEDBACK',
+                payload: '',
+            });
+        })
+    }
 
     render() {
 
@@ -13,7 +46,7 @@ class ReviewFeedback extends Component {
         const comments = this.props.comments;
 
         let formFilledOut = false;
-        if( feelings !== 0 && understanding !== 0 && support !== 0 && comments !== ''){
+        if( feelings !== 0 && understanding !== 0 && support !== 0 ){
             formFilledOut = true;
         }
 
@@ -25,7 +58,7 @@ class ReviewFeedback extends Component {
                 <p>Support: {support}</p>
                 <p>Comments: {comments}</p>
                 { formFilledOut ? 
-                    <button>SUBMIT</button>
+                    <button onClick={this.handleClick}>SUBMIT</button>
                 :
                     <button disabled={true}>INCOMPLETE</button>
                 }
