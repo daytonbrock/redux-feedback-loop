@@ -42,7 +42,7 @@ class ReviewFeedback extends Component {
         });
         this.props.dispatch({
             type: 'COMMENTS_FEEDBACK',
-            payload: '',
+            payload: null,
         });
     }
 
@@ -54,7 +54,7 @@ class ReviewFeedback extends Component {
         const comments = this.props.comments;
 
         let formFilledOut = false;
-        if( feelings !== 0 && understanding !== 0 && support !== 0 ){
+        if( feelings !== 0 && understanding !== 0 && support !== 0 && comments !== null){
             formFilledOut = true;
         }
 

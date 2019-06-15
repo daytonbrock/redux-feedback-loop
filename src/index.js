@@ -30,7 +30,7 @@ const supportFeedback = (state = 0, action) => {
     return state;
 }
 
-const commentsFeedback = (state = '', action) => {
+const commentsFeedback = (state = null, action) => {
     if (action.type === 'COMMENTS_FEEDBACK') {
         return action.payload;
     }

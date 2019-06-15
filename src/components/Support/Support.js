@@ -35,7 +35,7 @@ class Support extends Component {
                     <option value="5">5</option>
                 </select>
                 <button onClick={this.handleBackClick}>BACK</button>
-                <button onClick={this.handleClick}>NEXT</button>
+                <button onClick={this.handleNextClick}>NEXT</button>
                 <ReviewFeedback/>
             </div>
         );
