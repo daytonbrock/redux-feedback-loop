@@ -46,6 +46,11 @@ class ReviewFeedback extends Component {
         });
     }
 
+
+    handleBackClick = () => {
+        this.props.history.push('/3');
+    }
+
     render() {
 
         const feelings = this.props.feelings;
@@ -66,7 +71,10 @@ class ReviewFeedback extends Component {
                 <p>Support: {support}</p>
                 <p>Comments: {comments}</p>
                 { formFilledOut ? 
-                    <button onClick={this.handleClick}>SUBMIT</button>
+                    <div>
+                        <button onClick={this.handleBackClick}>BACK</button>
+                        <button onClick={this.handleClick}>SUBMIT</button>
+                    </div>
                 :
                     <button disabled={true}>INCOMPLETE</button>
                 }
