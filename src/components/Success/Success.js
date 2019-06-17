@@ -1,8 +1,10 @@
+// Success.js
 import React, { Component } from 'react';
 
 class Success extends Component {
 
     handleClick = () => {
+        // navigate to feelings, start feedback over
         this.props.history.push('/');
     }
 

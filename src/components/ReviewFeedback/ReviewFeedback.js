@@ -1,3 +1,4 @@
+// ReviewFeedback.js
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -5,29 +6,31 @@ import axios from 'axios';
 class ReviewFeedback extends Component {
 
     handleClick = () => {
-        // create data object to send
+        // create data object to send to database
         const feedback = {
             feeling: this.props.feelings,
             understanding: this.props.understanding,
             support: this.props.support,
             comments: this.props.comments,
         }
-        this.postToServer(feedback);
+        this.postToDatabase(feedback);
         // navigate to success page
         this.props.history.push('/5');
     }
 
-    postToServer = (object) => {
+    postToDatabase = (object) => {
+        // this will post feedback to database then reset feedback reducers
         axios({
             method: 'POST',
             url: '/submit',
             data: object,
         }).then(() => {
-            this.resetReduxState();
+            this.resetFeedbackReducers();
         })
     }
 
-    resetReduxState = () => {
+    resetFeedbackReducers = () => {
+        // reset reducers
         this.props.dispatch({
             type: 'FEELINGS_FEEDBACK',
             payload: 0,
@@ -48,6 +51,7 @@ class ReviewFeedback extends Component {
 
 
     handleBackClick = () => {
+        // navigate to comments
         this.props.history.push('/3');
     }
 
@@ -58,6 +62,7 @@ class ReviewFeedback extends Component {
         const support = this.props.support;
         const comments = this.props.comments;
 
+        // variable used to conditionally render submit button if feedback is filled out
         let formFilledOut = false;
         if( feelings !== 0 && understanding !== 0 && support !== 0 && comments !== null){
             formFilledOut = true;

@@ -1,3 +1,4 @@
+// Comments.js
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header';
@@ -16,6 +17,7 @@ class Comments extends Component {
     }
 
     handleNextClick = () => {
+        // update redux state, navigate to review feedback
         this.props.dispatch({
             type: 'COMMENTS_FEEDBACK',
             payload: this.state.comments,
@@ -24,6 +26,7 @@ class Comments extends Component {
     }
 
     handleBackClick = () => {
+        // navigate to support
         this.props.history.push('/2');
     }
 

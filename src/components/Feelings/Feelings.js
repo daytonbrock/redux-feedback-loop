@@ -1,3 +1,4 @@
+// Feelings.js
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header';
@@ -6,10 +7,12 @@ import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 class Feelings extends Component {
 
     handleChange = (event) => {
+        // update redux state on change
         this.props.dispatch({type: 'FEELINGS_FEEDBACK', payload: event.target.value});
     }
 
     handleClick = () => {
+        // navigate to understanding
         this.props.history.push('/1');
     }
 

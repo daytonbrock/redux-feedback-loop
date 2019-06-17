@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
+// the POST route
 app.post('/submit', (req, res) => {
     const feedback = req.body;
     pool.query(`
@@ -24,6 +26,7 @@ app.post('/submit', (req, res) => {
         }) // end query
 });
 
+// the GET route
 app.get('/admin', (req, res) => {
     pool.query(`
         SELECT * FROM "feedback" ORDER BY "id" DESC;`)
@@ -35,6 +38,7 @@ app.get('/admin', (req, res) => {
     }) // end query
 });
 
+// the DELETE route
 app.delete('/admin/:id', (req, res) => {
     pool.query(`
         DELETE FROM "feedback" WHERE "id"=$1;`, [req.params.id])

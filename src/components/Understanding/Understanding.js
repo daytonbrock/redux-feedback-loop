@@ -1,3 +1,4 @@
+// Understanding.js
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header';
@@ -6,6 +7,7 @@ import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 class Understanding extends Component {
 
     handleChange = (event) => {
+        // update state on change
         this.props.dispatch({
             type: 'UNDERSTANDING_FEEDBACK', 
             payload: event.target.value
@@ -13,10 +15,12 @@ class Understanding extends Component {
     }
 
     handleNextClick = () => {
+        // navigate to support
         this.props.history.push('/2');
     }
 
     handleBackClick = () => {
+        // navigate to feelings
         this.props.history.push('/');
     }
 

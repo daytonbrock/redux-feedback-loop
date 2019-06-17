@@ -1,3 +1,4 @@
+// Support.js
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../Header/Header';
@@ -6,6 +7,7 @@ import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 class Support extends Component {
 
     handleChange = (event) => {
+        // update state on change
         this.props.dispatch({
             type: 'SUPPORT_FEEDBACK',
             payload: event.target.value
@@ -13,10 +15,12 @@ class Support extends Component {
     }
 
     handleNextClick = () => {
+        // navigate to comments
         this.props.history.push('/3');
     }
 
     handleBackClick = () => {
+        // navigate to understanding
         this.props.history.push('/1');
     }
 

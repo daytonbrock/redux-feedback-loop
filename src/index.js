@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';
 
 // REDUCERS
+// update state with feedback from database
 const feedbackList = (state = [], action) => {
     if (action.type === 'REFRESH_FEEDBACK') {
         return action.payload;
@@ -18,27 +19,25 @@ const feedbackList = (state = [], action) => {
     return state;
 }
 
+// hold feeling, understanding, support, and comments feedback input by user
 const feelingsFeedback = (state = 0, action) => {
     if (action.type === 'FEELINGS_FEEDBACK') {
         return action.payload;
     }
     return state;
 }
-
 const understandingFeedback = (state = 0, action) => {
     if (action.type === 'UNDERSTANDING_FEEDBACK') {
         return action.payload;
     }
     return state;
 }
-
 const supportFeedback = (state = 0, action) => {
     if (action.type === 'SUPPORT_FEEDBACK') {
         return action.payload;
     }
     return state;
 }
-
 const commentsFeedback = (state = null, action) => {
     if (action.type === 'COMMENTS_FEEDBACK') {
         return action.payload;
