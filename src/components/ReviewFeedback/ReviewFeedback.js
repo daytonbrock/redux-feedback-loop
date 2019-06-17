@@ -19,13 +19,15 @@ class ReviewFeedback extends Component {
     }
 
     postToDatabase = (object) => {
-        // this will post feedback to database then reset feedback reducers
+        // this will post feedback to database, then
+        // reset feedback reducers and refresh feedbackList
         axios({
             method: 'POST',
             url: '/submit',
             data: object,
         }).then(() => {
             this.resetFeedbackReducers();
+            this.refreshFeedback();
         })
     }
 
@@ -49,6 +51,18 @@ class ReviewFeedback extends Component {
         });
     }
 
+    refreshFeedback = () => {
+        // this will refresh feedback in redux state
+        axios({
+            method: 'GET',
+            url: '/admin'
+        }).then((response) => {
+            this.props.dispatch({
+                type: 'REFRESH_FEEDBACK',
+                payload: response.data
+            });
+        });
+    }
 
     handleBackClick = () => {
         // navigate to comments
