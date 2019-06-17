@@ -1,3 +1,4 @@
+// index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -8,6 +9,14 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';
+
+// REDUCERS
+const feedbackList = (state = [], action) => {
+    if (action.type === 'REFRESH_FEEDBACK') {
+        return action.payload;
+    }
+    return state;
+}
 
 const feelingsFeedback = (state = 0, action) => {
     if (action.type === 'FEELINGS_FEEDBACK') {
@@ -37,8 +46,10 @@ const commentsFeedback = (state = null, action) => {
     return state;
 }
 
+// STORE
 const store = createStore(
     combineReducers({
+        feedbackList,
         feelingsFeedback,
         understandingFeedback,
         supportFeedback,
