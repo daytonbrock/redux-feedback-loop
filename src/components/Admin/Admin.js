@@ -1,6 +1,6 @@
+// Admin.js
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
+import FeedbackList from '../FeedbackList/FeedbackList';
 
 class Admin extends Component {
 
@@ -22,7 +22,7 @@ class Admin extends Component {
                         </tr>
                     </thead>
                     <tbody>
-
+                        <FeedbackList />
                     </tbody>
                 </table>
             </div>
@@ -30,8 +30,4 @@ class Admin extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-
-})
-
-export default connect(mapStateToProps)(Admin);
+export default Admin;

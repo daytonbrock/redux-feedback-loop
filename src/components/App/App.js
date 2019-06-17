@@ -13,6 +13,7 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import ReviewFeedback from '../ReviewFeedback/ReviewFeedback';
 import Success from '../Success/Success';
+import Admin from '../Admin/Admin';
 
 class App extends Component {
 
@@ -43,6 +44,7 @@ class App extends Component {
         <Route path='/3' component={Comments}/>
         <Route path='/4' component={ReviewFeedback}/>
         <Route path='/5' component={Success}/>
+        <Route path='/admin' component={Admin}/>
       </Router>
     );
   }
