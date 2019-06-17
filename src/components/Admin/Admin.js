@@ -7,6 +7,10 @@ class Admin extends Component {
     render() {
         return (
             <div className="App">
+                <header className="App-header">
+                    <h1 className="App-title">Feedback Results!</h1>
+                </header>
+                <br/>
                 <table>
                     <thead>
                         <tr>
@@ -27,7 +31,7 @@ class Admin extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 
 export default connect(mapStateToProps)(Admin);

@@ -24,6 +24,17 @@ app.post('/submit', (req, res) => {
         }) // end query
 });
 
+app.get('/admin', (req, res) => {
+    pool.query(`
+        SELECT * FROM "feedback" ORDER BY "id";`)
+    .then((response) => {
+        res.send(response.rows);
+    }).catch((error) => {
+        console.log('error in SELECT query:', error);
+        res.sendStatus(500);
+    }) // end query
+}) 
+
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);
