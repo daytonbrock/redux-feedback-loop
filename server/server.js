@@ -26,7 +26,7 @@ app.post('/submit', (req, res) => {
 
 app.get('/admin', (req, res) => {
     pool.query(`
-        SELECT * FROM "feedback" ORDER BY "id";`)
+        SELECT * FROM "feedback" ORDER BY "id" DESC;`)
     .then((response) => {
         res.send(response.rows);
     }).catch((error) => {
