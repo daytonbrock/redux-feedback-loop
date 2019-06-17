@@ -33,7 +33,18 @@ app.get('/admin', (req, res) => {
         console.log('error in SELECT query:', error);
         res.sendStatus(500);
     }) // end query
-}) 
+});
+
+app.delete('/admin/:id', (req, res) => {
+    pool.query(`
+        DELETE FROM "feedback" WHERE "id"=$1;`, [req.params.id])
+        .then(() => {
+            res.sendStatus(200);
+        }).catch((error) => {
+            console.log('Error with DELETE query:', error);
+            res.sendStatus(500);
+        }) // end query
+});
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
